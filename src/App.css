@@ -160,7 +160,7 @@
     padding: 1rem !important;
     position: relative !important;
     right: 0 !important;
-    margin-top: 1rem;
+    margin-top: 2rem;
     background-color: #131212 !important;
   }
 
@@ -170,12 +170,15 @@
     overflow-y: visible !important;
   }
 
+
   /* Botão centralizado */
   .mobile-button-container {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
   }
+
+  
 
   .mobile-button-container a {
     padding-left: 1.5rem !important;
@@ -194,6 +197,11 @@
   .sobre-mim {
     position: relative;
     top: -3em;
+  }
+
+  .mobile-text-box {
+    width: 300px;
+    
   }
 }
 
@@ -356,10 +364,62 @@
     bottom: -3.5em;
   }
   .project-button {
-    padding-left: 2rem !important;    /* 48px */
-    padding-right: 2rem !important;   /* 48px */
-    padding-top: 1rem !important;   /* 24px */
-    padding-bottom: 1rem !important;/* 24px */
-    font-size: 1.25rem !important;    /* 20px */
+    padding-left: 0.5rem !important;    /* 48px */
+    padding-right: 0.5rem !important;   /* 48px */
+    padding-top: 0.5rem !important;   /* 24px */
+    padding-bottom: 0.5rem !important;/* 24px */
+    font-size: 1rem !important;    /* 20px */
+  }
+  .project-card {
+    
   }
 }
+
+@media (max-width: 480px) {
+  .typing {
+    position: relative;
+    top: -1.5em;
+  }
+  .mobile-text-box {
+    width: 320px;
+    
+  }
+  @media (max-width: 400px) {
+  .project-card {
+    width: 300px;
+    min-height: auto;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+
+  .project-card-content {
+    padding: 1rem;
+  }
+
+  
+  .project-card h3 {
+    font-size: 1rem;
+  }
+
+  .project-card p {
+    font-size: 0.85rem;
+  }
+
+  .project-card .text-xs {
+    font-size: 0.75rem;
+  }
+
+  .project-card .text-lg {
+    font-size: 1rem;
+  }
+
+  .project-card .tracking-[0.1em] {
+    letter-spacing: 0.05em;
+  }
+
+  /* Reduzindo altura da imagem */
+  .project-card .relative.w-full.h-\[220px\] {
+    height: 160px !important;
+  }
+}
+

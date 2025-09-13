@@ -168,13 +168,13 @@ const Sobre = () => {
           </div>
 
           <article
-            className={`texto-artigo w-[620px] h-[670px] flex flex-col text-base font-prata leading-relaxed bg-[#131212] p-8 rounded-lg border border-white/20 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative -right-40 transition-opacity transition-transform duration-700 ease-out transform mobile-texto-artigo ${
+            className={`texto-artigo w-[620px] h-[670px] flex flex-col text-base font-prata leading-relaxed bg-[#131212] p-8 rounded-lg border border-white/20 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative -right-40 transition-opacity transition-transform duration-700 ease-out transform mobile-texto-artigo sobre-caixa-texto${
               fotoVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <div className="space-y-4 overflow-y-auto pr-2 flex-1 font-light text-[20px] mobile-texto-content">
+            <div className="space-y-4 overflow-y-auto pr-2 flex-1 font-light text-[20px] mobile-texto-content mobile-text-box">
               <p className="font-poppins">
                 Olá! Sou Vinícius Freire, desenvolvedor{" "}
                 <span className="text-[#F3AD4C] font-prata">Full-Stack</span>{" "}
