@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import TypingText from "/src/components/projetos/TypingText"; // Importando o TypingText
 
 // Imagens
-import bgGradiente from "../assets/bggradiente.jpg";
+import bgGradiente from "/assets/bggradiente.jpg";
 import javascriptLogo from "../assets/Unofficial_JavaScript_logo_2.png";
 import pythonLogo from "../assets/python.png";
 import html5Logo from "../assets/html5.png";

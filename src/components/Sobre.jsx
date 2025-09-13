@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import bgGradiente from "../assets/bggradiente.jpg";
+import bgGradiente from "/assets/bggradiente.jpg";
 import autoretrato2 from "../assets/autoretrato2.jpeg";
 import autoretrato3 from "../assets/autoretrato3.jpeg";
 import autoretrato4 from "../assets/autoretrato4.jpeg";

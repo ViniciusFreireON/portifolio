@@ -5,7 +5,7 @@ import { useFloatingAnimation } from "/src/components/habilidades/useFloatingAni
 
 import TypingText from "/src/components/habilidades/TypingText"; // ajuste o caminho conforme a estrutura do seu projeto
 
-import bgGradiente from "../assets/bggradiente.jpg";
+import bgGradiente from "/assets/bggradiente.jpg";
 import javascriptLogo from "../assets/Unofficial_JavaScript_logo_2.png";
 import pythonLogo from "../assets/python.png";
 import css3Logo from "../assets/css3.jpg";
