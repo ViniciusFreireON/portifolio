@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { useFloatingAnimation } from "/src/components/habilidades/useFloatingAnimation";
+import TypingText from "/src/components/habilidades/TypingText";
 
-import TypingText from "/src/components/habilidades/TypingText"; // ajuste o caminho conforme a estrutura do seu projeto
 
 import bgGradiente from "/assets/bggradiente.jpg";
 import javascriptLogo from "../assets/Unofficial_JavaScript_logo_2.png";
@@ -16,7 +16,6 @@ const Habilidades = () => {
   const sectionRef = useRef(null);
   const [fadeInVisible, setFadeInVisible] = useState(false);
 
-  // Estados para os progressos das barras animadas
   const [frontEndProgress, setFrontEndProgress] = useState(
     new Array(4).fill(0)
   );
@@ -43,7 +42,6 @@ const Habilidades = () => {
     };
   }, []);
 
-  // Skills e porcentagens fixas conforme solicitado
   const frontEndSkills = [
     { name: "HTML e CSS", percent: 90 },
     { name: "JavaScript", percent: 75 },
@@ -72,7 +70,7 @@ const Habilidades = () => {
       skills.forEach(({ percent }, i) => {
         let progress = 0;
         const interval = setInterval(() => {
-          progress += 1.2; // Incremento maior para animação mais rápida
+          progress += 1.2;
           setProgress((old) => {
             const newProgress = [...old];
             newProgress[i] =
@@ -80,7 +78,7 @@ const Habilidades = () => {
             return newProgress;
           });
           if (progress >= percent) clearInterval(interval);
-        }, 15); // Intervalo menor para animação mais rápida
+        }, 15);
       });
     };
 
@@ -133,7 +131,7 @@ const Habilidades = () => {
           <div
             key={index}
             ref={(el) => (floatingRefs.current[index] = el)}
-            className={`w-[200px] h-[200px] overflow-hidden rounded-lg absolute ${img.style} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`}
+            className={`decorative-image w-[200px] h-[200px] overflow-hidden rounded-lg absolute ${img.style} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`}
           >
             <img
               src={img.src}
@@ -159,20 +157,20 @@ const Habilidades = () => {
           </span>
         </h2>
 
-        {/* DIV ADICIONADA PARA POSICIONAR SÓ O TYPING TEXT */}
-        <div className="relative bottom-[5.8em] right-0">
+        <div className="relative bottom-[5.8em] right-0 typing-tex-hab">
           <TypingText
             text="Coisas que aprendi entre <strong>cafés</strong> e <strong>madrugadas</strong>."
             speed={50}
+            className="typing-tex-hab"
           />
         </div>
       </div>
 
       {/* CAIXAS DE HABILIDADES */}
-      <div className="mt-10 px-16 grid grid-cols-1 md:grid-cols-3 gap-12 relative -bottom-[10em] z-10">
+      <div className="habilidades-grid mt-10 px-16 grid grid-cols-1 md:grid-cols-3 gap-12 relative -bottom-[10em] z-10">
         {/* FRONT-END */}
         <div
-          className={`${fadeBaseClass} ${
+          className={`habilidade-card ${fadeBaseClass} ${
             fadeInVisible
               ? "opacity-100 translate-y-0 delay-[400ms]"
               : "opacity-0 translate-y-10"
@@ -192,7 +190,7 @@ const Habilidades = () => {
                   {frontEndProgress[index]}%
                 </span>
               </div>
-              <div className="w-full bg-gray-700 h-2.5 rounded-full">
+              <div className="w-full bg-gray-700 habilidade-barra h-2.5 rounded-full">
                 <div
                   className="bg-white h-2.5 rounded-full transition-all duration-500 ease-in-out"
                   style={{ width: `${frontEndProgress[index]}%` }}
@@ -204,7 +202,7 @@ const Habilidades = () => {
 
         {/* BACK-END */}
         <div
-          className={`${fadeBaseClass} ${
+          className={`habilidade-card ${fadeBaseClass} ${
             fadeInVisible
               ? "opacity-100 translate-y-0 delay-[600ms]"
               : "opacity-0 translate-y-10"
@@ -224,7 +222,7 @@ const Habilidades = () => {
                   {backEndProgress[index]}%
                 </span>
               </div>
-              <div className="w-full bg-gray-700 h-2.5 rounded-full">
+              <div className="w-full bg-gray-700 habilidade-barra h-2.5 rounded-full">
                 <div
                   className="bg-white h-2.5 rounded-full transition-all duration-500 ease-in-out"
                   style={{ width: `${backEndProgress[index]}%` }}
@@ -236,7 +234,7 @@ const Habilidades = () => {
 
         {/* FERRAMENTAS */}
         <div
-          className={`${fadeBaseClass} ${
+          className={`habilidade-card ${fadeBaseClass} ${
             fadeInVisible
               ? "opacity-100 translate-y-0 delay-[800ms]"
               : "opacity-0 translate-y-10"
@@ -256,7 +254,7 @@ const Habilidades = () => {
                   {ferramentasProgress[index]}%
                 </span>
               </div>
-              <div className="w-full bg-gray-700 h-2.5 rounded-full">
+              <div className="w-full bg-gray-700 habilidade-barra h-2.5 rounded-full">
                 <div
                   className="bg-white h-2.5 rounded-full transition-all duration-500 ease-in-out"
                   style={{ width: `${ferramentasProgress[index]}%` }}
@@ -276,9 +274,8 @@ const Habilidades = () => {
         }`}
       >
         <a
-          href="https://drive.google.com/uc?export=download&id=1oapSf9tZ3Z2FZHw_odRatf2gmoVdIhNS
-"
-          className="font-poppins bg-gradient-to-b from-[#0A0B0C] to-[#171717] text-white text-[1.2em] px-10 py-4 hover:scale-105 transition-all duration-300 ease-in-out drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] rounded-[1em] border border-white/20 tracking-[0.1em] font-light"
+          href="https://drive.google.com/uc?export=download&id=1oapSf9tZ3Z2FZHw_odRatf2gmoVdIhNS"
+          className="botao-curriculo font-poppins bg-gradient-to-b from-[#0A0B0C] to-[#171717] text-white text-[1.2em] px-10 py-4 hover:scale-105 transition-all duration-300 ease-in-out drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] rounded-[1em] border border-white/20 tracking-[0.1em] font-light"
         >
           Baixar Curriculum
         </a>

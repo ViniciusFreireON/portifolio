@@ -11,18 +11,14 @@ const Hero = () => {
   const [socialVisible, setSocialVisible] = useState(false);
   const [fadeInVisible, setFadeInVisible] = useState(false);
 
-  // refs para parallax (se quiser usar)
   const bgRef = useRef(null);
   const sectionRef = useRef(null);
   const habilidadesRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => setSocialVisible(true), 800);
-
-    // Dispara fade in após montado
     setTimeout(() => setFadeInVisible(true), 300);
 
-    // Parallax scroll
     const handleScroll = () => {
       const scrollY = window.scrollY;
       if (bgRef.current) {
@@ -43,7 +39,7 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen overflow-hidden"
+      className=" relative w-full h-screen overflow-hidden"
     >
       <HeaderMenu />
 
@@ -58,40 +54,42 @@ const Hero = () => {
       ></div>
 
       {/* CONTEÚDO PRINCIPAL */}
-      <div className="relative z-10 text-white px-8 h-full flex flex-col justify-between select-none">
-        {/* CENTRO: TÍTULO CENTRALIZADO NA TELA */}
+      <div className="relative z-10 text-white px-4 sm:px-6 md:px-8 h-full flex flex-col justify-between select-none">
+        {/* CENTRO: TÍTULO + SUBTÍTULO CENTRALIZADOS */}
         <div
-          className={`flex flex-1 justify-center items-center relative -bottom-[3em] transition-opacity duration-1000 ease-out transform ${
+          className={`flex flex-1 justify-center items-center relative transition-opacity duration-1000 ease-out transform ${
             fadeInVisible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-10"
-          }`}
+          } 
+          -bottom-[2em] sm:-bottom-[2em] md:-bottom-[3em]`}
         >
           <div className="text-center">
-            <TypingText htmlFormattedText={htmlFormattedText} />
-            <h1 className="text-8xl font-poppins font-normal leading-tight bg-black/50 rounded-[0.3em] border border-white/20">
-              <span className="rounded px-10 py- inline-block w-fit relative -left-2">
+            {/* “Hi, I'm” sumindo abaixo de md */}
+            <div className="hiim">
+            <div className="hidden md:block">
+              <TypingText htmlFormattedText={htmlFormattedText} />
+            </div>
+          </div>
+            <div className="text-hero">
+            <h1 className="  hero-title text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-poppins font-normal leading-tight bg-black/50 rounded-[0.3em] border border-white/20">
+              <span className="rounded px-4 sm:px-6 md:px-10 py-1 inline-block w-fit relative -left-1 sm:-left-2">
                 Vinícius{" "}
               </span>
-              <span className="text-[#F3AD4C] font-normal font-prata inline-block w-fit relative -left-8">
+              <span className="text-[#F3AD4C] font-normal font-prata inline-block w-fit relative -left-2 sm:-left-4 md:-left-8">
                 Freire
               </span>
             </h1>
-          </div>
-        </div>
 
-        {/* Subtítulo — parte inferior direita */}
-        <div
-          className={`mb-32 text-center mr-16 select-none relative -top-[9em] -right-[1.9em] transition-opacity duration-1000 ease-out transform delay-200 ${
-            fadeInVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <h2 className="text-4xl font-jakarta font-light tracking-[0.1em] relative">
-            DESENVOLVEDOR FULL STACK <br />
-            <span>e DESIGNER UI/UX</span>
-          </h2>
+            {/* SUBTÍTULO CENTRALIZADO ABAIXO DO TÍTULO, MAIS PRÓXIMO */}
+            <div className="mt-2 sm:mt-3 md:mt-4 transition-opacity duration-1000 ease-out delay-200">
+              <h2 className="text-xl sm:text-2xl md:text-4xl font-jakarta font-light tracking-wider">
+                DESENVOLVEDOR FULL STACK <br />
+                <span>e DESIGNER UI/UX</span>
+              </h2>
+            </div>
+            </div>
+          </div>
         </div>
 
         {/* Rodapé com texto + ícones */}

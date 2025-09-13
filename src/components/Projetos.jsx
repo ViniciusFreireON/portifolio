@@ -15,15 +15,14 @@ import { useFloatingAnimation } from "/src/components/projetos/UseFloatingAnimat
 const Projetos = () => {
   const [fadeInVisible, setFadeInVisible] = useState(false);
   const [fadeInTitleVisible, setFadeInTitleVisible] = useState(false);
-  const [fadeInDescriptionVisible, setFadeInDescriptionVisible] =
-    useState(false);
+  const [fadeInDescriptionVisible, setFadeInDescriptionVisible] = useState(false);
 
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
 
   // Referências para as imagens decorativas
-  const floatingImagesRef = useFloatingAnimation(3); // Passa o número de imagens que você tem para animar
+  const floatingImagesRef = useFloatingAnimation(3);
 
   // Estado para animação de fade nos projetos
   const fadeBaseClass = "transition-opacity duration-1000 ease-out transform";
@@ -94,14 +93,12 @@ const Projetos = () => {
       { threshold: 0.3 }
     );
 
-    if (descriptionRef.current)
-      descriptionObserver.observe(descriptionRef.current);
+    if (descriptionRef.current) descriptionObserver.observe(descriptionRef.current);
 
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
       if (titleRef.current) titleObserver.unobserve(titleRef.current);
-      if (descriptionRef.current)
-        descriptionObserver.unobserve(descriptionRef.current);
+      if (descriptionRef.current) descriptionObserver.unobserve(descriptionRef.current);
     };
   }, []);
 
@@ -164,9 +161,9 @@ const Projetos = () => {
           fadeInTitleVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10"
-        }`}
+        } title-centralized`}
       >
-        <h2 className="text-8xl font-poppins font-normal">
+        <h2 className="text-8xl font-poppins font-normal title-postition">
           Meus{" "}
           <span className="font-prata font-normal text-[#F3AD4C]">
             Projetos.
@@ -175,6 +172,7 @@ const Projetos = () => {
       </div>
 
       {/* Descrição com animação de digitação */}
+      <div className="typing-proj">
       <div
         ref={descriptionRef}
         className={`font-jakarta font-extralight tracking-[0.2em] text-[0.9em] relative -right-[35.5em] -top-[13em] ${fadeBaseClass} ${
@@ -185,9 +183,10 @@ const Projetos = () => {
       >
         <TypingText text="Um pouco do que já coloquei no mundo." speed={100} />
       </div>
+        </div>
 
       {/* Lista de Projetos */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center max-w-5xl mx-auto mt-20 relative -top-20 z-10">
+      <div className="projects-grid grid grid-cols-1 md:grid-cols-2 gap-4 justify-center max-w-5xl mx-auto mt-20 relative -top-20 z-10">
         {projetos.map((projeto, index) => (
           <div
             key={index}
@@ -240,25 +239,25 @@ const Projetos = () => {
                 {projeto.status === "em andamento" ? (
                   <a
                     href="#"
-                    className="font-jakarta font-light text-[1.1em] tracking-[0.1em] border border-white/20 text-white px-14 py-4 rounded-[0.9em] transition-all duration-300 ease-in-out transform hover:scale-105 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
+                    className="font-jakarta font-light text-[1.1em] tracking-[0.1em] border border-white/20 text-white px-14 py-4 rounded-[0.9em] transition-all duration-300 ease-in-out transform hover:scale-105 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] project-button"
                   >
                     Em andamento
                   </a>
                 ) : (
                   <>
                     <a
-                      href={projeto.website}
+                      href="https://hackathonmaster.vercel.app"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-jakarta tracking-[0.1em] text-[1.1em] font-light bg-gradient-to-b from-[#0A0B0C] to-[#171717] text-white px-14 py-4 rounded-[0.9em] transition-all duration-300 ease-in-out transform hover:scale-105 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
+                      className="font-jakarta tracking-[0.1em] text-[1.1em] font-light bg-gradient-to-b from-[#0A0B0C] to-[#171717] text-white px-14 py-4 rounded-[0.9em] transition-all duration-300 ease-in-out transform hover:scale-105 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] project-button"
                     >
                       Website
                     </a>
                     <a
-                      href={projeto.codigo}
+                      href="https://github.com/ViniciusFreireON/hackathonmaster"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-jakarta font-light text-[1.1em] tracking-[0.1em] border border-white/20 text-white px-14 py-4 rounded-[0.9em] transition-all duration-300 ease-in-out transform hover:scale-105 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
+                      className="font-jakarta font-light text-[1.1em] tracking-[0.1em] border border-white/20 text-white px-14 py-4 rounded-[0.9em] transition-all duration-300 ease-in-out transform hover:scale-105 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] project-button"
                     >
                       Código
                     </a>

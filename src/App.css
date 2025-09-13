@@ -1,0 +1,365 @@
+@media (max-width: 600px) {
+  /* Centralizar título e texto */
+  .mobile-center-text {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+  .mobile-title {
+    position: relative;
+    left: 0 !important;
+    bottom: 0 !important;
+    font-size: 2.5rem !important;
+  }
+
+  /* Foto container: background contido ao redor da foto, bordas arredondadas */
+  .mobile-foto-container {
+    padding: 1rem !important;
+    background-color: #d9d9d9 !important;
+    border-radius: 1rem !important;
+    position: relative !important;
+    bottom: 0 !important;
+    width: auto !important;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Foto: bordas arredondadas, tamanho responsivo */
+  .mobile-foto-img {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+    object-position: top;
+    transform: scaleX(-1) !important;
+    box-shadow: none !important;
+  }
+
+  /* Legenda foto */
+  .mobile-foto-caption {
+    position: relative !important;
+    bottom: 0 !important;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    /* Centralizar o container principal */
+    .pl-16 {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    /* Centralizar título e texto */
+    .mobile-center-text {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+    }
+    .mobile-title {
+      position: relative !important;
+      left: 0 !important;
+      bottom: 0 !important;
+      font-size: 2.5rem !important;
+    }
+
+    /* Centralizar todo o conteúdo principal e mudar flex para coluna e alinhamento central */
+    .mobile-conteudo-principal {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* Foto container: background contido ao redor da foto, bordas arredondadas, centralizado */
+    .mobile-foto-container {
+      padding: 1rem !important;
+      background-color: #d9d9d9 !important;
+      border-radius: 1rem !important;
+      position: relative !important;
+      bottom: 0 !important;
+      width: auto !important;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Foto: bordas arredondadas, tamanho responsivo, centralizada */
+    .mobile-foto-img {
+      border-radius: 1rem !important;
+      width: 100% !important;
+      height: auto !important;
+      object-fit: cover;
+      object-position: top;
+      transform: scaleX(-1) !important;
+      box-shadow: none !important;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Legenda foto centralizada */
+    .mobile-foto-caption {
+      position: relative !important;
+      bottom: 0 !important;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* Caixa de texto: bordas arredondadas, padding menor, largura responsiva, centralizado */
+    .mobile-texto-artigo {
+      width: 100% !important;
+      height: auto !important;
+      border-radius: 1rem !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 1rem !important;
+      position: relative !important;
+      right: 0 !important;
+      margin-top: 1rem;
+      background-color: #131212 !important;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .mobile-texto-content {
+      font-size: 1rem !important;
+      padding-right: 0 !important;
+      overflow-y: visible !important;
+    }
+
+    /* Botão centralizado */
+    .mobile-button-container {
+      display: flex !important;
+      justify-content: center !important;
+      margin-top: 1rem;
+    }
+
+    .mobile-button-container a {
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+      font-size: 1rem !important;
+      border-radius: 0.5rem !important;
+    }
+  }
+
+  /* Caixa de texto: bordas arredondadas, padding menor, largura responsiva */
+  .mobile-texto-artigo {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 1rem !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 1rem !important;
+    position: relative !important;
+    right: 0 !important;
+    margin-top: 1rem;
+    background-color: #131212 !important;
+  }
+
+  .mobile-texto-content {
+    font-size: 1rem !important;
+    padding-right: 0 !important;
+    overflow-y: visible !important;
+  }
+
+  /* Botão centralizado */
+  .mobile-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .mobile-button-container a {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    font-size: 1rem !important;
+    border-radius: 0.5rem !important;
+  }
+
+  .typing {
+    position: relative;
+    top: -5em;
+  }
+
+  .sobre-mim {
+    position: relative;
+    top: -3em;
+  }
+}
+
+/* Acima de 700px, muda o position */
+@media (min-width: 700px) {
+  .text-hero {
+    position: relative;
+    top: -3em;
+  }
+  .hiim {
+    position: relative;
+    top: -3em;
+  }
+}
+
+/* Media Query para dispositivos com largura menor que 600px */
+@media screen and (max-width: 600px) {
+  #habilidades {
+    padding: 1.5rem;
+    min-height: auto;
+    background-attachment: scroll;
+  }
+
+  #habilidades h2 {
+    font-size: 2.5rem;
+  }
+
+  .typing-text {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .habilidades-grid {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 1.5rem;
+  }
+
+  .habilidade-card {
+    padding: 1rem !important;
+  }
+
+  .habilidade-card h3 {
+    font-size: 1rem;
+  }
+
+  .habilidade-card span {
+    font-size: 0.9rem;
+  }
+
+  .habilidade-barra {
+    height: 1rem !important;
+  }
+
+  .botao-curriculo {
+    font-size: 1rem !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 0.75em;
+  }
+
+  .decorative-image {
+    width: 100px !important;
+    height: 100px !important;
+    filter: blur(2px);
+  }
+
+  .text-8xl {
+    font-size: 2.5rem !important;
+  }
+
+  .px-16 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .pl-16 {
+    padding-left: 1rem !important;
+  }
+
+  .mt-10 {
+    margin-top: 2rem !important;
+  }
+
+  .mt-32 {
+    margin-top: 3rem !important;
+  }
+
+  .-bottom-\[6em\],
+  .-bottom-\[10em\],
+  .-right-\[10em\] {
+    bottom: 0 !important;
+    right: 0 !important;
+  }
+
+  .drop-shadow-\[0_6px_8px_rgba\(0\,0\,0\,0\.6\)\] {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4) !important;
+  }
+  .habilidade-barra {
+    height: 0.6rem !important; /* antes era 1rem */
+  }
+
+  .habilidade-barra > div {
+    height: 0.6rem !important; /* barra de preenchimento */
+  }
+
+  /* Centraliza o título apenas no mobile */
+  #habilidades h2 {
+    text-align: center;
+  }
+
+  /* Remove padding e posicionamentos do contêiner do título */
+  .titulo-container {
+    padding-left: 0 !important;
+    right: 0 !important;
+    align-items: center;
+  }
+
+  .typing-tex-hab {
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    left: -13.5em;
+    bottom: 5em;
+  }
+}
+
+/* Aumenta o tamanho dos botões e centraliza o texto a partir de 600px */
+@media (min-width: 600px) {
+  .custom-button {
+    padding-left: 5rem !important; /* 80px */
+    padding-right: 5rem !important;
+    padding-top: 1.5rem !important; /* 24px */
+    padding-bottom: 1.5rem !important;
+    font-size: 1.4rem !important;
+    text-align: center !important;
+
+    /* Centraliza verticalmente e horizontalmente */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .title-centralized {
+    right: 50% !important;
+    transform: translateX(50%) !important;
+    left: auto !important;
+    padding-left: 0 !important;
+    text-align: center;
+  }
+  .title-postition {
+    position: relative !important;
+    bottom: -1.5em;
+  }
+  .typing-proj {
+    position: relative;
+    right: 31.6em;
+    bottom: -3.5em;
+  }
+  .project-button {
+    padding-left: 2rem !important;    /* 48px */
+    padding-right: 2rem !important;   /* 48px */
+    padding-top: 1rem !important;   /* 24px */
+    padding-bottom: 1rem !important;/* 24px */
+    font-size: 1.25rem !important;    /* 20px */
+  }
+}

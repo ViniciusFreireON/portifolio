@@ -7,6 +7,8 @@ import Contato from "./components/Contato";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 
+
+
 function App() {
   const bgRef = useRef(null);
   return (

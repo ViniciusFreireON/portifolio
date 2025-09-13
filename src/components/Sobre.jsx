@@ -5,9 +5,8 @@ import autoretrato3 from "../assets/autoretrato3.jpeg";
 import autoretrato4 from "../assets/autoretrato4.jpeg";
 import autoretrato5 from "../assets/autoretrato5.jpeg";
 
-import TypingText from "/src/components/sobre/TypingText"; // Ajuste o caminho conforme seu projeto
+import TypingText from "/src/components/sobre/TypingText";
 
-// Hook para animação de flutuação lenta e suave
 function useFloatingAnimation(count) {
   const refs = useRef([]);
 
@@ -21,8 +20,8 @@ function useFloatingAnimation(count) {
 
       refs.current.forEach((el) => {
         if (!el) return;
-        const speed = 0.0003; // Velocidade lenta igual para todas
-        const amplitude = 10; // Movimento vertical de até +-10px
+        const speed = 0.0003;
+        const amplitude = 10;
         const y = Math.sin(elapsed * speed * 2 * Math.PI) * amplitude;
         const x = Math.cos(elapsed * speed * 1.5 * Math.PI) * (amplitude / 3);
 
@@ -42,17 +41,16 @@ function useFloatingAnimation(count) {
 
 const Sobre = () => {
   const sectionRef = useRef(null);
-  const [visible, setVisible] = useState(false); // título + texto juntos
+  const [visible, setVisible] = useState(false);
   const [fotoVisible, setFotoVisible] = useState(false);
 
-  // Use o hook para as 3 imagens decorativas
   const floatingRefs = useFloatingAnimation(3);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), 200); // título + texto aparecem juntos após 200ms
+          setTimeout(() => setVisible(true), 200);
           setTimeout(() => setFotoVisible(true), 400);
 
           observer.unobserve(entry.target);
@@ -97,7 +95,6 @@ const Sobre = () => {
         id="decorations"
         className="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none"
       >
-        {/* Imagem decorativa 1 */}
         <div
           ref={(el) => (floatingRefs.current[0] = el)}
           className="w-[200px] h-[200px] overflow-hidden rounded-lg opacity-50 relative -bottom-[45em] -left-2 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
@@ -109,7 +106,6 @@ const Sobre = () => {
           />
         </div>
 
-        {/* Imagem decorativa 2 */}
         <div
           ref={(el) => (floatingRefs.current[1] = el)}
           className="w-[200px] h-[200px] overflow-hidden rounded-lg opacity-50 scale-x-[-1] relative -right-[28em] -bottom-[40em] drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
@@ -121,7 +117,6 @@ const Sobre = () => {
           />
         </div>
 
-        {/* Imagem decorativa 3 */}
         <div
           ref={(el) => (floatingRefs.current[2] = el)}
           className="w-[200px] h-[200px] overflow-hidden rounded-lg opacity-50 relative -top-[14em] -right-[27em] drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
@@ -135,27 +130,28 @@ const Sobre = () => {
       </div>
 
       {/* CONTEÚDO PRINCIPAL */}
-      <div className="pl-16 relative z-10">
-        {/* TÍTULO E TEXTO COM ANIMAÇÃO JUNTOS */}
+      <div className="pl-16 relative z-10 mobile-conteudo-principal">
         <div
-          className={`transition-opacity transition-transform duration-700 ease-out transform ${
+          className={`titulo-texto transition-opacity transition-transform duration-700 ease-out transform flex flex-col mobile-center-text mobile-title-container ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-8xl font-poppins font-normal relative -left-[0.3em] -bottom-[1em]">
+          <h2 className="sobre-mim text-8xl font-poppins font-normal relative -left-[0.3em] -bottom-[1em] order-1 mobile-title">
             Sobre{" "}
             <span className="font-prata font-normal text-[#F3AD4C]">Mim.</span>
           </h2>
-
-          {/* Texto animado */}
-          <TypingText text={textoAnimado} speed={100} />
+          <div className="typing">
+            <TypingText
+              text={textoAnimado}
+              speed={100}
+              className="order-2 mt-4"
+            />
+          </div>
         </div>
-
         {/* Imagem e Texto */}
-        <div className="flex flex-col lg:flex-row items-start gap-12">
-          {/* FOTO COM ANIMAÇÃO */}
+        <div className="conteudo-principal flex flex-col lg:flex-row items-start gap-12 mobile-conteudo-principal">
           <div
-            className={`bg-[#D9D9D9] p-5 rounded-lg drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative -bottom-[5em] pb-[2em] transition-opacity transition-transform duration-700 ease-out transform ${
+            className={`foto-container bg-[#D9D9D9] p-5 rounded-lg drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative -bottom-[5em] pb-[2em] transition-opacity transition-transform duration-700 ease-out transform mobile-foto-container ${
               fotoVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
@@ -164,22 +160,21 @@ const Sobre = () => {
             <img
               src={autoretrato5}
               alt="Autorretrato"
-              className="w-[420px] h-[520px] object-cover object-top rounded-lg drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] -scale-x-100"
+              className="autorretato-img w-[420px] h-[520px] object-cover object-top rounded-lg drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] -scale-x-100 mobile-foto-img"
             />
-            <p className="text-center text-black font-jakarta text-sm tracking-[0.2em] relative -bottom-4">
+            <p className="text-center text-black font-jakarta text-sm tracking-[0.2em] relative -bottom-4 mobile-foto-caption">
               Vinícius Freire, 2025.
             </p>
           </div>
 
-          {/* TEXTO COM ANIMAÇÃO */}
           <article
-            className={`w-[620px] h-[670px] flex flex-col text-base font-prata leading-relaxed bg-[#131212] p-8 rounded-lg border border-white/20 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative -right-40 transition-opacity transition-transform duration-700 ease-out transform ${
+            className={`texto-artigo w-[620px] h-[670px] flex flex-col text-base font-prata leading-relaxed bg-[#131212] p-8 rounded-lg border border-white/20 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative -right-40 transition-opacity transition-transform duration-700 ease-out transform mobile-texto-artigo ${
               fotoVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
             }`}
           >
-            <div className="space-y-4 overflow-y-auto pr-2 flex-1 font-light text-[20px]">
+            <div className="space-y-4 overflow-y-auto pr-2 flex-1 font-light text-[20px] mobile-texto-content">
               <p className="font-poppins">
                 Olá! Sou Vinícius Freire, desenvolvedor{" "}
                 <span className="text-[#F3AD4C] font-prata">Full-Stack</span>{" "}
@@ -215,11 +210,10 @@ const Sobre = () => {
               </p>
             </div>
 
-            {/* Botão */}
-            <div className="mt-4">
+            <div className="mt-4 flex justify-center mobile-button-container">
               <a
                 href="https://linktr.ee/viniciusfreiredev"
-                className="font-poppins font-light border border-white/20 bg-gradient-to-b from-[#0A0B0C] to-[#171717] text-white text-[1.2em] px-8 py-3 rounded-[0.9em] inline-block cursor-pointer drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-105"
+                className="font-poppins font-light border border-white/20 bg-gradient-to-b from-[#0A0B0C] to-[#171717] text-white text-[1.2em] px-8 py-3 rounded-[0.9em] inline-block cursor-pointer drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-105 mobile-button-container a"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -229,6 +223,20 @@ const Sobre = () => {
           </article>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 600px) {
+          .mobile-title-container {
+            /* flex-col + ordem já aplicados */
+          }
+          .mobile-title-container h2 {
+            order: 1;
+          }
+          .mobile-title-container .order-2 {
+            order: 2;
+          }
+        }
+      `}</style>
     </section>
   );
 };

@@ -49,7 +49,7 @@ const TypingText = ({ speed = 150 }) => {
   return (
     <>
       <p
-        className="text-[1.1em] font-jakarta font-extralight mb-2 relative -left-[17em] -bottom-2 bg-black/50 rounded-[0.7em] px-4 py-1 inline-block w-fit tracking-[0.2em] border border-white/20"
+        className="typing-text text-[1.1em] font-jakarta font-extralight mb-2 relative -left-[17em] -bottom-2 bg-black/50 rounded-[0.7em] px-4 py-1 inline-block w-fit tracking-[0.2em] border border-white/20"
         dangerouslySetInnerHTML={{
           __html: content + `<span class="blink">|</span>`,
         }}

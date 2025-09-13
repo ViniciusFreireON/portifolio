@@ -20,12 +20,16 @@ const HeaderMenu = () => {
   return (
     <header id="menu" className="w-full fixed top-0 z-50">
       <div className="py-8 relative">
-        {/* Botão "Whatsapp" à esquerda */}
+        {/* Botão "Whatsapp" à esquerda (centralizado no mobile) */}
         <a
           href="https://wa.me/5571981391485?text=Ol%C3%A1%21%20Sou%20dev%20Fullstack%20especializado%20em%20aplica%C3%A7%C3%B5es%20escal%C3%A1veis%2C%20seguras%20e%20perform%C3%A1ticas.%20Trabalho%20com%20frontend%2C%20backend%2C%20integra%C3%A7%C3%B5es%20via%20API%20e%20automa%C3%A7%C3%B5es%20de%20processos.%20Me%20chama%20e%20vamos%20discutir%20sua%20necessidade%20t%C3%A9cnica%21"
-          className={`absolute left-[8em] top-[2.8em] -translate-y-1/2 flex items-center gap-2 bg-gradient-to-r from-[#0A0B0C] to-[#171717] text-white font-font-jakarta text-[1em] font-light tracking-[0.1em] px-5 py-2 rounded-[0.8em] 
+          className={`
+            fixed left-1/2 top-[2.8em] -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 bg-gradient-to-r from-[#0A0B0C] to-[#171717] text-white font-font-jakarta text-[1em] font-light tracking-[0.1em] px-5 py-2 rounded-[0.8em] 
             transition-opacity transition-transform duration-700 ease-out cursor-pointer drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border border-white/20 z-50
             transform hover:scale-105 transition-transform duration-300
+
+            md:absolute md:left-[8em] md:top-[2.8em] md:-translate-x-0
+
             ${
               leftBtnVisible
                 ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
@@ -34,13 +38,14 @@ const HeaderMenu = () => {
           `}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="WhatsApp"
         >
           <img
             src="/assets/whatsapp.png"
             alt="Ícone de mensagem"
             className="w-4 h-4"
           />
-          Fale comigo
+          <span>Fale comigo</span>
         </a>
 
         {/* Botão Menu à direita */}
@@ -117,13 +122,13 @@ const HeaderMenu = () => {
         >
           {/* Container para posicionar form e menu */}
           <div className="relative w-full relative -right-[26.5em]">
-            {/* Form */}
+            {/* Form - escondido em telas menores que sm */}
             <form
               className={`absolute inset-0 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] w-full transition-opacity duration-500 ease-in-out transform ${
                 menuOpen
                   ? "opacity-0 scale-90 pointer-events-none"
                   : "opacity-100 scale-100 pointer-events-auto"
-              }`}
+              } hidden sm:block`}
               onSubmit={(e) => e.preventDefault()}
             >
               <input
@@ -141,50 +146,49 @@ const HeaderMenu = () => {
 
             {/* Menu */}
             <ul
-  className={`absolute inset-0 flex justify-center items-center w-full bg-black bg-opacity-50 border border-white/20 relative -- rounded-[0.8em] text-white font-font-jakarta text-[0.9em] font-light px-6 py-4 gap-10 tracking-[0.1em] transition-opacity duration-500 ease-in-out transform ${
-    menuOpen
-      ? "opacity-100 scale-100 pointer-events-auto"
-      : "opacity-0 scale-90 pointer-events-none"
-  }`}
-  style={{ minHeight: "3.5rem" }}
->
-  {[
-    { label: "Sobre mim", href: "#sobre" },
-    { label: "Habilidades", href: "#habilidades" },
-    { label: "Projetos", href: "#projetos" },
-    { label: "Contato", href: "#contato" },
-  ].flatMap(({ label, href }, index, arr) => {
-    const item = (
-      <li key={label} className="cursor-pointer select-none">
-        <a
-          href={href}
-          className="relative text-white transform transition-all duration-500 ease-in-out hover:scale-105 
+              className={`absolute inset-0 flex justify-center items-center w-full bg-black bg-opacity-50 border border-white/20 relative -- rounded-[0.8em] text-white font-font-jakarta text-[0.9em] font-light px-6 py-4 gap-10 tracking-[0.1em] transition-opacity duration-500 ease-in-out transform ${
+                menuOpen
+                  ? "opacity-100 scale-100 pointer-events-auto"
+                  : "opacity-0 scale-90 pointer-events-none"
+              }`}
+              style={{ minHeight: "3.5rem" }}
+            >
+              {[
+                { label: "Sobre mim", href: "#sobre" },
+                { label: "Habilidades", href: "#habilidades" },
+                { label: "Projetos", href: "#projetos" },
+                { label: "Contato", href: "#contato" },
+              ].flatMap(({ label, href }, index, arr) => {
+                const item = (
+                  <li key={label} className="cursor-pointer select-none">
+                    <a
+                      href={href}
+                      className="relative text-white transform transition-all duration-500 ease-in-out hover:scale-105 
                      hover:text-transparent bg-gradient-to-r from-[#F3AD4C] via-[#FFD966] to-[#F3AD4C] bg-clip-text
                      after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-gradient-to-r after:from-[#F3AD4C] after:via-[#FFD966] after:to-[#F3AD4C] after:transition-all after:duration-500 after:ease-in-out after:w-0 hover:after:w-full"
-          onClick={() =>
-            typeof setMenuOpen === "function" && setMenuOpen(false)
-          }
-        >
-          {label}
-        </a>
-      </li>
-    );
+                      onClick={() =>
+                        typeof setMenuOpen === "function" && setMenuOpen(false)
+                      }
+                    >
+                      {label}
+                    </a>
+                  </li>
+                );
 
-    if (index !== arr.length - 1) {
-      return [
-        item,
-        <span
-          key={`separator-${index}`}
-          className="w-0.5 h-0.5 rounded-full bg-white mx-4 inline-block"
-          aria-hidden="true"
-        />,
-      ];
-    }
+                if (index !== arr.length - 1) {
+                  return [
+                    item,
+                    <span
+                      key={`separator-${index}`}
+                      className="w-0.5 h-0.5 rounded-full bg-white mx-4 inline-block"
+                      aria-hidden="true"
+                    />,
+                  ];
+                }
 
-    return item;
-  })}
-</ul>
-
+                return item;
+              })}
+            </ul>
           </div>
         </nav>
       </div>
