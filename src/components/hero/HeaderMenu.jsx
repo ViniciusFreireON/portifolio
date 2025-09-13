@@ -36,7 +36,7 @@ const HeaderMenu = () => {
           rel="noopener noreferrer"
         >
           <img
-            src="/src/assets/whatsapp.png"
+            src="/assets/whatsapp.png"
             alt="Ícone de mensagem"
             className="w-4 h-4"
           />

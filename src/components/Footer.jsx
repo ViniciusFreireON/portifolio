@@ -3,17 +3,17 @@ import React, { useState, useEffect, useRef } from "react";
 const socials = [
   {
     href: "#",
-    icon: "/src/assets/instagram.png",
+    icon: "/assets/instagram.png",
     alt: "Instagram",
   },
   {
     href: "https://github.com/ViniciusFreireON",
-    icon: "/src/assets/github.png",
+    icon: "/assets/github.png",
     alt: "GitHub",
   },
   {
     href: "https://www.linkedin.com/in/vinícius-freire-066884375",
-    icon: "/src/assets/linkedin.png",
+    icon: "/assets/linkedin.png",
     alt: "LinkedIn",
   },
 ];
@@ -133,7 +133,7 @@ const Footer = () => {
           target="_blank"
         >
           <img
-            src="/src/assets/whatsapp.png"
+            src="/assets/whatsapp.png"
             alt="WhatsApp"
             className="w-5 h-5 transition-transform duration-300"
           />

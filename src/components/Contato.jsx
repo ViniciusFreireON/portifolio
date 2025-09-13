@@ -130,28 +130,28 @@ const Contato = () => {
       >
         <DecorativeImage
           ref={floatingRefs[0]}
-          src="/src/assets/github.png"
-          alt="JavaScript"
+          src="/assets/github.png"
+          alt="GitHub"
           style="top-[39em] left-[55em] opacity-20"
           speed="0.3"
         />
         <DecorativeImage
           ref={floatingRefs[1]}
-          src="/src/assets/linkedin.png"
+          src="/assets/linkedin.png"
           alt="LinkedIn"
           style="top-[6em] left-[28em] opacity-20"
           speed="0.3"
         />
         <DecorativeImage
           ref={floatingRefs[2]}
-          src="/src/assets/github.png"
+          src="/assets/github.png"
           alt="GitHub"
           style="top-[17em] left-[60em] opacity-30"
           speed="0.5"
         />
         <DecorativeImage
           ref={floatingRefs[3]}
-          src="/src/assets/instagram.png"
+          src="/assets/instagram.png"
           alt="Instagram"
           style="top-[60em] left-[7em] opacity-20"
           speed="0.7"
@@ -232,17 +232,17 @@ const Contato = () => {
 
           <div className="relative -bottom-[2em] -right-8 font-jakarta text-[1em] font-light tracking-[0.1em] space-y-6">
             <ContactInfo
-              icon="/src/assets/envelope.png"
+              icon="/assets/envelope.png"
               label="Email:"
               value="vinicius.freire.fulldev@gmail.com"
             />
             <ContactInfo
-              icon="/src/assets/localizacao.png"
+              icon="/assets/localizacao.png"
               label="Localização:"
               value="Via Láctea, Terra, Brasil."
             />
             <ContactInfo
-              icon="/src/assets/tel.png"
+              icon="/assets/tel.png"
               label="Telefone:"
               value="55+ (71) 9 8129-1485"
             />
@@ -267,7 +267,7 @@ const Contato = () => {
                   className="transition transform hover:scale-110 bg-[#313131] bg-opacity-30 p-3 rounded-full border border-white/20"
                 >
                   <img
-                    src={`/src/assets/${name}.png`}
+                    src={`/assets/${name}.png`}
                     alt={name}
                     className={`w-10 h-10 ${
                       name === "linkedin" ? "relative -right-[0.2em]" : ""
@@ -329,7 +329,7 @@ const ContactInfo = ({ icon, label, value }) => {
           {/* Ícone visível só enquanto o mouse estiver em cima */}
           {hovered && (
             <img
-              src="/src/assets/copiar.png" // ajuste para o caminho correto do seu ícone
+              src="/assets/copiar.png" // ajuste para o caminho correto do seu ícone
               alt="Ícone de copiar"
               className="w-4 h-4"
             />

@@ -18,7 +18,7 @@ const FooterSocial = ({ visible }) => {
             transform transition-transform duration-300 hover:scale-110"
         >
           <img
-            src="/src/assets/instagram.png"
+            src="/assets/instagram.png"
             alt="Instagram"
             className="w-6 h-6"
           />
@@ -30,7 +30,7 @@ const FooterSocial = ({ visible }) => {
           className="bg-[#141414] rounded-full p-4 
             transform transition-transform duration-300 hover:scale-110"
         >
-          <img src="/src/assets/github.png" alt="GitHub" className="w-6 h-6" />
+          <img src="/assets/github.png" alt="GitHub" className="w-6 h-6" />
         </a>
         <a
           href="https://www.linkedin.com/in/vinícius-freire-066884375"
@@ -40,7 +40,7 @@ const FooterSocial = ({ visible }) => {
             transform transition-transform duration-300 hover:scale-110"
         >
           <img
-            src="/src/assets/linkedin.png"
+            src="/assets/linkedin.png"
             alt="LinkedIn"
             className="w-6 h-6"
           />
