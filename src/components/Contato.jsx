@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
-import { useFloatingAnimation } from "/src/components/contato/useFloatingAnimation";
+import { useFloatingAnimation } from "/src/components/contato/UseFloatingAnimation";
 
 // TypingText agora recebe prop active
 const TypingText = ({ text = "", speed = 150, active = false }) => {
