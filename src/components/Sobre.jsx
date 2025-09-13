@@ -136,11 +136,11 @@ const Sobre = () => {
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="sobre-mim text-8xl font-poppins font-normal relative -left-[0.3em] -bottom-[1em] order-1 mobile-title">
+          <h2 className="sobre-mim text-8xl font-poppins font-normal relative -left-[0.3em] -bottom-[em] order-1 mobile-title">
             Sobre{" "}
             <span className="font-prata font-normal text-[#F3AD4C]">Mim.</span>
           </h2>
-          <div className="typing">
+          <div className="relative -bottom-[4em] typing">
             <TypingText
               text={textoAnimado}
               speed={100}
