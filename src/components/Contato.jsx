@@ -116,7 +116,7 @@ const Contato = () => {
       id="contato"
       className="relative min-h-[1vh] p-16 bg-gradient-to-b from-[#131212] to-[#1F1E1E] text-white"
       style={{
-        backgroundImage: "url('/src/assets/bggradiente.jpg')",
+        backgroundImage: "url('/assets/bggradiente.jpg')",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
