@@ -15,8 +15,7 @@ import { useFloatingAnimation } from "/src/components/projetos/UseFloatingAnimat
 const Projetos = () => {
   const [fadeInVisible, setFadeInVisible] = useState(false);
   const [fadeInTitleVisible, setFadeInTitleVisible] = useState(false);
-  const [fadeInDescriptionVisible, setFadeInDescriptionVisible] =
-    useState(false);
+  const [fadeInDescriptionVisible, setFadeInDescriptionVisible] = useState(false);
 
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -91,14 +90,12 @@ const Projetos = () => {
       { threshold: 0.3 }
     );
 
-    if (descriptionRef.current)
-      descriptionObserver.observe(descriptionRef.current);
+    if (descriptionRef.current) descriptionObserver.observe(descriptionRef.current);
 
     return () => {
       if (sectionRef.current) observer.unobserve(sectionRef.current);
       if (titleRef.current) titleObserver.unobserve(titleRef.current);
-      if (descriptionRef.current)
-        descriptionObserver.unobserve(descriptionRef.current);
+      if (descriptionRef.current) descriptionObserver.unobserve(descriptionRef.current);
     };
   }, []);
 
@@ -237,8 +234,8 @@ const Projetos = () => {
               {/* Descrição */}
               <p className="text-white text-[1em] mt-2">{projeto.descricao}</p>
 
-              {/* Botões com animação de grow */}
-              <div className="flex gap-4 mt-6 justify-center flex-wrap">
+              {/* Botões com animação de grow e alinhados lado a lado */}
+              <div className="flex flex-row gap-x-4 mt-6 justify-center">
                 {projeto.status === "em andamento" ? (
                   <a
                     href="#"
