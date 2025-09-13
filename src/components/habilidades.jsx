@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { useFloatingAnimation } from "/src/components/habilidades/useFloatingAnimation";
 import TypingText from "/src/components/habilidades/TypingText";
 
-
 import bgGradiente from "/assets/bggradiente.jpg";
 import javascriptLogo from "../assets/Unofficial_JavaScript_logo_2.png";
 import pythonLogo from "../assets/python.png";
@@ -16,13 +15,9 @@ const Habilidades = () => {
   const sectionRef = useRef(null);
   const [fadeInVisible, setFadeInVisible] = useState(false);
 
-  const [frontEndProgress, setFrontEndProgress] = useState(
-    new Array(4).fill(0)
-  );
+  const [frontEndProgress, setFrontEndProgress] = useState(new Array(4).fill(0));
   const [backEndProgress, setBackEndProgress] = useState(new Array(4).fill(0));
-  const [ferramentasProgress, setFerramentasProgress] = useState(
-    new Array(4).fill(0)
-  );
+  const [ferramentasProgress, setFerramentasProgress] = useState(new Array(4).fill(0));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -88,26 +83,10 @@ const Habilidades = () => {
   }, [fadeInVisible]);
 
   const images = [
-    {
-      src: javascriptLogo,
-      alt: "JavaScript",
-      style: "top-[39em] left-[55em] opacity-20",
-    },
-    {
-      src: pythonLogo,
-      alt: "Python",
-      style: "top-[14em] left-[65em] opacity-20",
-    },
-    {
-      src: css3Logo,
-      alt: "CSS3",
-      style: "top-[8em] left-[12em] opacity-50",
-    },
-    {
-      src: html5Logo,
-      alt: "HTML5",
-      style: "bottom-[15em] left-[7em] opacity-20",
-    },
+    { src: javascriptLogo, alt: "JavaScript", style: "top-[38em] left-[90em] opacity-20" },
+    { src: pythonLogo, alt: "Python", style: "top-[5em] left-[65em] opacity-20" },
+    { src: css3Logo, alt: "CSS3", style: "top-[13em] left-[20em] opacity-50" },
+    { src: html5Logo, alt: "HTML5", style: "top-[35em] left-[7em] opacity-20" },
   ];
 
   const fadeBaseClass = "transition-opacity duration-1000 ease-out transform";
@@ -133,47 +112,48 @@ const Habilidades = () => {
             ref={(el) => (floatingRefs.current[index] = el)}
             className={`decorative-image w-[200px] h-[200px] overflow-hidden rounded-lg absolute ${img.style} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`}
           >
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="w-full h-full object-cover blur-[1px]"
-            />
+            <img src={img.src} alt={img.alt} className="w-full h-full object-cover blur-[1px]" />
           </div>
         ))}
       </div>
 
-      {/* TÍTULO */}
-      <div
-        className={`pl-16 relative -bottom-[6em] -right-[10em] z-10 ${fadeBaseClass} ${
-          fadeInVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10"
-        }`}
-      >
-        <h2 className="text-8xl font-poppins font-normal">
-          Minhas{" "}
-          <span className="font-prata font-normal text-[#F3AD4C]">
-            Habilidades.
-          </span>
-        </h2>
-
-        <div className="relative bottom-[5.8em] right-0 typing-tex-hab">
-          <TypingText
-            text="Coisas que aprendi entre <strong>cafés</strong> e <strong>madrugadas</strong>."
-            speed={50}
-            className="typing-tex-hab"
-          />
+      {/* TÍTULO E SUBTÍTULO CENTRALIZADOS */}
+      <div className="flex flex-col items-center justify-center text-center mb-16 relative z-10">
+        {/* Título */}
+        <div
+          className={`${fadeBaseClass} ${
+            fadeInVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <h2 className="text-8xl font-poppins font-normal">
+            Minhas{" "}
+            <span className="font-prata font-normal text-[#F3AD4C]">Habilidades.</span>
+          </h2>
         </div>
+
+        {/* Subtítulo centralizado */}
+        <div
+  className={`${fadeBaseClass} ${
+    fadeInVisible
+      ? "opacity-100 translate-y-0 delay-200"
+      : "opacity-0 translate-y-10"
+  } mt-4 w-full flex flex-col items-center relative -top-[6.5em] -left-[13.5em]`}
+>
+  <TypingText
+    text="Coisas que aprendi entre <strong>cafés</strong> e <strong>madrugadas</strong>."
+    speed={50}
+    className="text-xl font-light mt-2 max-w-[600px] text-center px-4"
+  />
+</div>
+
       </div>
 
       {/* CAIXAS DE HABILIDADES */}
-      <div className="habilidades-grid mt-10 px-16 grid grid-cols-1 md:grid-cols-3 gap-12 relative -bottom-[10em] z-10">
+      <div className="habilidades-grid mt-10 px-16 grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
         {/* FRONT-END */}
         <div
           className={`habilidade-card ${fadeBaseClass} ${
-            fadeInVisible
-              ? "opacity-100 translate-y-0 delay-[400ms]"
-              : "opacity-0 translate-y-10"
+            fadeInVisible ? "opacity-100 translate-y-0 delay-[400ms]" : "opacity-0 translate-y-10"
           } bg-[#141414] rounded-lg shadow-lg p-8 drop-shadow-[0_6px_8px_rgba(0,0,0,0.6)] border border-white/20`}
         >
           <h3 className="flex items-center text-xl font-normal font-jakarta tracking-[0.1em] mb-6">
@@ -183,12 +163,8 @@ const Habilidades = () => {
           {frontEndSkills.map((skill, index) => (
             <div key={skill.name} className="mb-5">
               <div className="flex justify-between text-base mb-2">
-                <span className="font-jakarta tracking-[0.1em]">
-                  {skill.name}
-                </span>
-                <span className="font-jakarta tracking-[0.1em]">
-                  {frontEndProgress[index]}%
-                </span>
+                <span className="font-jakarta tracking-[0.1em]">{skill.name}</span>
+                <span className="font-jakarta tracking-[0.1em]">{frontEndProgress[index]}%</span>
               </div>
               <div className="w-full bg-gray-700 habilidade-barra h-2.5 rounded-full">
                 <div
@@ -203,9 +179,7 @@ const Habilidades = () => {
         {/* BACK-END */}
         <div
           className={`habilidade-card ${fadeBaseClass} ${
-            fadeInVisible
-              ? "opacity-100 translate-y-0 delay-[600ms]"
-              : "opacity-0 translate-y-10"
+            fadeInVisible ? "opacity-100 translate-y-0 delay-[600ms]" : "opacity-0 translate-y-10"
           } bg-[#141414] rounded-lg shadow-lg p-8 drop-shadow-[0_6px_8px_rgba(0,0,0,0.6)] border border-white/20`}
         >
           <h3 className="flex items-center text-xl font-normal font-jakarta tracking-[0.1em] mb-6">
@@ -215,12 +189,8 @@ const Habilidades = () => {
           {backEndSkills.map((skill, index) => (
             <div key={skill.name} className="mb-5">
               <div className="flex justify-between text-base mb-2">
-                <span className="font-jakarta tracking-[0.1em]">
-                  {skill.name}
-                </span>
-                <span className="font-jakarta tracking-[0.1em]">
-                  {backEndProgress[index]}%
-                </span>
+                <span className="font-jakarta tracking-[0.1em]">{skill.name}</span>
+                <span className="font-jakarta tracking-[0.1em]">{backEndProgress[index]}%</span>
               </div>
               <div className="w-full bg-gray-700 habilidade-barra h-2.5 rounded-full">
                 <div
@@ -235,9 +205,7 @@ const Habilidades = () => {
         {/* FERRAMENTAS */}
         <div
           className={`habilidade-card ${fadeBaseClass} ${
-            fadeInVisible
-              ? "opacity-100 translate-y-0 delay-[800ms]"
-              : "opacity-0 translate-y-10"
+            fadeInVisible ? "opacity-100 translate-y-0 delay-[800ms]" : "opacity-0 translate-y-10"
           } bg-[#141414] rounded-lg shadow-lg p-8 drop-shadow-[0_6px_8px_rgba(0,0,0,0.6)] border border-white/20`}
         >
           <h3 className="flex items-center text-xl font-normal font-jakarta tracking-[0.1em] mb-6">
@@ -247,12 +215,8 @@ const Habilidades = () => {
           {ferramentas.map((skill, index) => (
             <div key={skill.name} className="mb-5">
               <div className="flex justify-between text-base mb-2">
-                <span className="font-jakarta tracking-[0.1em]">
-                  {skill.name}
-                </span>
-                <span className="font-jakarta tracking-[0.1em]">
-                  {ferramentasProgress[index]}%
-                </span>
+                <span className="font-jakarta tracking-[0.1em]">{skill.name}</span>
+                <span className="font-jakarta tracking-[0.1em]">{ferramentasProgress[index]}%</span>
               </div>
               <div className="w-full bg-gray-700 habilidade-barra h-2.5 rounded-full">
                 <div
@@ -267,10 +231,8 @@ const Habilidades = () => {
 
       {/* BOTÃO DE CURRÍCULO */}
       <div
-        className={`flex justify-center mt-32 relative -bottom-[6em] z-10 ${fadeBaseClass} ${
-          fadeInVisible
-            ? "opacity-100 translate-y-0 delay-[1000ms]"
-            : "opacity-0 translate-y-10"
+        className={`flex justify-center mt-32 relative z-10 ${fadeBaseClass} ${
+          fadeInVisible ? "opacity-100 translate-y-0 delay-[1000ms]" : "opacity-0 translate-y-10"
         }`}
       >
         <a

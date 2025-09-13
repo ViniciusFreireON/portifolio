@@ -57,7 +57,7 @@ const TypingText = ({ text = "", speed = 150, active = false }) => {
   return (
     <>
       <p
-        className="text-[0.9em] font-jakarta font-extralight mb-10 relative -bottom-[6.5em] -right-[0.5em] tracking-[0.2em]"
+        className="text-[0.9em] font-jakarta font-extralight tracking-[0.2em] text-center mobile:text-sm"
         dangerouslySetInnerHTML={{
           __html: content + (active ? `<span class="blink">|</span>` : ""),
         }}
@@ -114,7 +114,7 @@ const Contato = () => {
   return (
     <section
       id="contato"
-      className="relative min-h-[1vh] p-16 bg-gradient-to-b from-[#131212] to-[#1F1E1E] text-white"
+      className="relative min-h-[1vh] p-16 bg-gradient-to-b from-[#131212] to-[#1F1E1E] text-white mobile:p-8"
       style={{
         backgroundImage: "url('/assets/bggradiente.jpg')",
         backgroundSize: "cover",
@@ -132,55 +132,52 @@ const Contato = () => {
           ref={floatingRefs[0]}
           src="/assets/github.png"
           alt="GitHub"
-          style="top-[39em] left-[55em] opacity-20"
+          style="top-[39em] left-[60em] opacity-20 mobile:top-[15em] mobile:left-[5em] mobile:opacity-10"
           speed="0.3"
         />
         <DecorativeImage
           ref={floatingRefs[1]}
           src="/assets/linkedin.png"
           alt="LinkedIn"
-          style="top-[6em] left-[28em] opacity-20"
+          style="top-[6em] left-[28em] opacity-20 mobile:top-[5em] mobile:left-[70%] mobile:opacity-10"
           speed="0.3"
         />
-        <DecorativeImage
-          ref={floatingRefs[2]}
-          src="/assets/github.png"
-          alt="GitHub"
-          style="top-[17em] left-[60em] opacity-30"
-          speed="0.5"
-        />
+        
         <DecorativeImage
           ref={floatingRefs[3]}
           src="/assets/instagram.png"
           alt="Instagram"
-          style="top-[60em] left-[7em] opacity-20"
+          style="top-[60em] left-[7em] opacity-20 mobile:top-[40em] mobile:left-[10%] mobile:opacity-10"
           speed="0.7"
         />
       </div>
 
-      {/* TÍTULO */}
-      <div
-        className={`pl-16 mb-10 relative z-10 -right-[22em] -top-[11em] ${
-          hasAnimated
+      {/* TÍTULO CENTRALIZADO */}
+      <div className="flex flex-col items-center justify-center text-center mb-16 relative z-10 mobile:mb-10">
+        {/* Título */}
+        <div
+          className={`${hasAnimated
             ? "opacity-100 transition-opacity duration-1000"
             : "opacity-0"
-        }`}
-      >
-        <h2 className="text-8xl font-poppins font-normal relative -left-[1.2em]">
-          Entre em{" "}
-          <span className="font-prata font-normal text-[#F3AD4C]">
-            Contato.
-          </span>
-        </h2>
-        <div
-          className={`font-jakarta font-extralight tracking-[0.2em] text-[0.9em] relative -right-[10.5em] -top-[5em] ${
-            hasAnimated
-              ? "opacity-100 transition-opacity duration-1000 delay-300"
-              : "opacity-0"
           }`}
         >
+          <h2 className="text-8xl font-poppins font-normal mobile:text-5xl">
+            Entre em{" "}
+            <span className="font-prata font-normal text-[#F3AD4C]">
+              Contato.
+            </span>
+          </h2>
+        </div>
+
+        {/* Descrição com animação de digitação - CENTRALIZADA */}
+        <div
+          className={`mt-6 ${hasAnimated
+            ? "opacity-100 transition-opacity duration-1000 delay-300"
+            : "opacity-0"
+          } mobile:mt-4`}
+        >
           <TypingText
-            text="Tô por aqui, só mando um alô."
+            text="Tô por aqui, só manda um alô."
             speed={150}
             active={hasAnimated}
           />
@@ -189,19 +186,19 @@ const Contato = () => {
 
       {/* CONTEÚDO */}
       <div
-        className={`relative z-10 flex flex-col md:flex-row gap-10 max-w-6xl mx-auto mt-10 ${
+        className={`relative z-10 flex flex-col md:flex-row gap-10 max-w-6xl mx-auto mt-10 mobile:mt-6 mobile:gap-8 ${
           hasAnimated
             ? "opacity-100 transition-opacity duration-1000 delay-500"
             : "opacity-0"
         }`}
       >
         {/* Formulário */}
-        <div className="bg-[#131212] border border-white/20 rounded-xl p-8 shadow-lg w-[600px] h-[830px]">
-          <h3 className="text-[2.5em] leading-[1.1em] font-poppins mb-6">
+        <div className="bg-[#131212] border border-white/20 rounded-xl p-8 shadow-lg w-[600px] h-[830px] mobile:w-full mobile:h-auto mobile:p-6">
+          <h3 className="text-[2.5em] leading-[1.1em] font-poppins mb-6 mobile:text-2xl mobile:mb-4">
             Transforme sua ideia <br />
             em <span className="text-[#F3AD4C] font-prata">Realidade.</span>
           </h3>
-          <form className="space-y-4">
+          <form className="space-y-4 mobile:space-y-3">
             <FormField
               label="Nome"
               type="text"
@@ -216,7 +213,7 @@ const Contato = () => {
 
             <button
               type="submit"
-              className="font-jakarta font-light tracking-[0.1em] bg-gradient-to-b from-[#0A0B0C] to-[#171717] text-white text-[1.2em] px-[4em] py-4 rounded-[1em] transition-transform duration-500 ease-in-out drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border border-white/20 transform hover:scale-105"
+              className="font-jakarta font-light tracking-[0.1em] bg-gradient-to-b from-[#0A0B0C] to-[#171717] text-white text-[1.2em] px-[4em] py-4 rounded-[1em] transition-transform duration-500 ease-in-out drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border border-white/20 transform hover:scale-105 mobile:text-base mobile:px-8 mobile:py-3 mobile:w-full"
             >
               Enviar
             </button>
@@ -224,13 +221,13 @@ const Contato = () => {
         </div>
 
         {/* Informações de Contato */}
-        <div className="bg-[#131212] border border-white/20 rounded-xl p-8 shadow-lg w-[500px] h-[500px] font-poppins tracking-wide relative -bottom-[em]">
-          <h3 className="text-[2.5em] leading-[1.1em] mb-4">
+        <div className="bg-[#131212] border border-white/20 rounded-xl p-8 shadow-lg w-[500px] h-[500px] font-poppins tracking-wide mobile:w-full mobile:h-auto mobile:p-6">
+          <h3 className="text-[2.5em] leading-[1.1em] mb-4 mobile:text-2xl mobile:mb-3">
             Mundo Real <br />
             <span className="text-[#F3AD4C] font-prata">&</span> Digital.
           </h3>
 
-          <div className="relative -bottom-[2em] -right-8 font-jakarta text-[1em] font-light tracking-[0.1em] space-y-6">
+          <div className="font-jakarta text-[1em] font-light tracking-[0.1em] space-y-6 mobile:space-y-4 mobile:text-sm">
             <ContactInfo
               icon="/assets/envelope.png"
               label="Email:"
@@ -247,7 +244,7 @@ const Contato = () => {
               value="55+ (71) 9 8129-1485"
             />
 
-            <div className="flex gap-10 mt-4 relative -bottom-2">
+            <div className="flex gap-10 mt-4 mobile:gap-6 mobile:justify-center mobile:mt-6">
               {[
                 {
                   name: "instagram",
@@ -264,12 +261,12 @@ const Contato = () => {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition transform hover:scale-110 bg-[#313131] bg-opacity-30 p-3 rounded-full border border-white/20"
+                  className="transition transform hover:scale-110 bg-[#313131] bg-opacity-30 p-3 rounded-full border border-white/20 mobile:p-2"
                 >
                   <img
                     src={`/assets/${name}.png`}
                     alt={name}
-                    className={`w-10 h-10 ${
+                    className={`w-10 h-10 mobile:w-8 mobile:h-8 ${
                       name === "linkedin" ? "relative -right-[0.2em]" : ""
                     }`}
                   />
@@ -279,32 +276,136 @@ const Contato = () => {
           </div>
         </div>
       </div>
+
+      {/* Media Queries para Smartphones */}
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .mobile\\:p-8 {
+            padding: 2rem;
+          }
+          .mobile\\:text-5xl {
+            font-size: 3rem;
+          }
+          .mobile\\:mb-10 {
+            margin-bottom: 2.5rem;
+          }
+          .mobile\\:mt-4 {
+            margin-top: 1rem;
+          }
+          .mobile\\:text-sm {
+            font-size: 0.875rem;
+          }
+          .mobile\\:mt-6 {
+            margin-top: 1.5rem;
+          }
+          .mobile\\:gap-8 {
+            gap: 2rem;
+          }
+          .mobile\\:w-full {
+            width: 100%;
+          }
+          .mobile\\:h-auto {
+            height: auto;
+          }
+          .mobile\\:p-6 {
+            padding: 1.5rem;
+          }
+          .mobile\\:text-2xl {
+            font-size: 1.5rem;
+          }
+          .mobile\\:mb-4 {
+            margin-bottom: 1rem;
+          }
+          .mobile\\:space-y-3 {
+            margin-top: 0.75rem;
+          }
+          .mobile\\:text-base {
+            font-size: 1rem;
+          }
+          .mobile\\:px-8 {
+            padding-left: 2rem;
+            padding-right: 2rem;
+          }
+          .mobile\\:py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+          }
+          .mobile\\:w-full {
+            width: 100%;
+          }
+          .mobile\\:mb-3 {
+            margin-bottom: 0.75rem;
+          }
+          .mobile\\:space-y-4 {
+            margin-top: 1rem;
+          }
+          .mobile\\:gap-6 {
+            gap: 1.5rem;
+          }
+          .mobile\\:justify-center {
+            justify-content: center;
+          }
+          .mobile\\:mt-6 {
+            margin-top: 1.5rem;
+          }
+          .mobile\\:p-2 {
+            padding: 0.5rem;
+          }
+          .mobile\\:w-8 {
+            width: 2rem;
+          }
+          .mobile\\:h-8 {
+            height: 2rem;
+          }
+          .mobile\\:top-\\[15em\\] {
+            top: 15em;
+          }
+          .mobile\\:left-\\[5em\\] {
+            left: 5em;
+          }
+          .mobile\\:opacity-10 {
+            opacity: 0.1;
+          }
+          .mobile\\:top-\\[5em\\] {
+            top: 5em;
+          }
+          .mobile\\:left-\\[70\\%\\] {
+            left: 70%;
+          }
+          .mobile\\:top-\\[40em\\] {
+            top: 40em;
+          }
+          .mobile\\:left-\\[10\\%\\] {
+            left: 10%;
+          }
+        }
+      `}</style>
     </section>
   );
 };
 
 const FormField = ({ label, type, placeholder }) => (
   <>
-    <p className="font-jakarta text-[1em] font-light tracking-[0.1em] relative -bottom-3 -right-2">
+    <p className="font-jakarta text-[1em] font-light tracking-[0.1em] relative -bottom-3 -right-2 mobile:text-sm mobile:-bottom-2 mobile:-right-1">
       {label}
     </p>
     {type === "textarea" ? (
       <textarea
         placeholder={placeholder}
         rows="4"
-        className="w-full bg-[#313131]/50 text-white p-3 rounded-md border border-white/10 outline-none h-[20rem] font-jakarta tracking-[0.1em] font-extralight"
+        className="w-full bg-[#313131]/50 text-white p-3 rounded-md border border-white/10 outline-none h-[20rem] font-jakarta tracking-[0.1em] font-extralight mobile:h-[15rem] mobile:text-sm"
       />
     ) : (
       <input
         type={type}
         placeholder={placeholder}
-        className="w-full bg-[#313131]/50 text-white p-3 rounded-md border border-white/10 outline-none font-jakarta tracking-[0.1em] font-extralight"
+        className="w-full bg-[#313131]/50 text-white p-3 rounded-md border border-white/10 outline-none font-jakarta tracking-[0.1em] font-extralight mobile:text-sm mobile:p-2"
       />
     )}
   </>
 );
 
-// 🔥 Aqui está o ContactInfo atualizado com o ícone visível no hover
+// ContactInfo component (mantido igual)
 const ContactInfo = ({ icon, label, value }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -314,24 +415,22 @@ const ContactInfo = ({ icon, label, value }) => {
 
   return (
     <div className="flex items-start gap-3 relative">
-      <img src={icon} alt={`${label} icon`} className="w-5 h-5 mt-1" />
+      <img src={icon} alt={`${label} icon`} className="w-5 h-5 mt-1 mobile:w-4 mobile:h-4" />
       <div>
-        <p className="text-white/70 mb-1">{label}</p>
+        <p className="text-white/70 mb-1 mobile:text-sm">{label}</p>
         <div
-          className="flex items-center gap-2 cursor-pointer text-white hover:underline select-none"
+          className="flex items-center gap-2 cursor-pointer text-white hover:underline select-none mobile:text-sm"
           onClick={handleCopy}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
           title="Clique para copiar"
         >
           <p>{value}</p>
-
-          {/* Ícone visível só enquanto o mouse estiver em cima */}
           {hovered && (
             <img
-              src="/assets/copiar.png" // ajuste para o caminho correto do seu ícone
+              src="/assets/copiar.png"
               alt="Ícone de copiar"
-              className="w-4 h-4"
+              className="w-4 h-4 mobile:w-3 mobile:h-3"
             />
           )}
         </div>
@@ -343,7 +442,7 @@ const ContactInfo = ({ icon, label, value }) => {
 const DecorativeImage = React.forwardRef(({ src, alt, style }, ref) => (
   <div
     ref={ref}
-    className={`w-[200px] h-[200px] overflow-hidden rounded-lg absolute ${style} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]`}
+    className={`w-[200px] h-[200px] overflow-hidden rounded-lg absolute ${style} drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] mobile:w-[120px] mobile:h-[120px]`}
   >
     <img
       src={src}

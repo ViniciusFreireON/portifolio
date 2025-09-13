@@ -97,7 +97,7 @@ const Sobre = () => {
       >
         <div
           ref={(el) => (floatingRefs.current[0] = el)}
-          className="w-[200px] h-[200px] overflow-hidden rounded-lg opacity-50 relative -bottom-[45em] -left-2 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
+          className="w-[200px] h-[200px] overflow-hidden rounded-lg opacity-50 relative -bottom-[43em] -right-[15em] drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
         >
           <img
             src={autoretrato2}
@@ -108,7 +108,7 @@ const Sobre = () => {
 
         <div
           ref={(el) => (floatingRefs.current[1] = el)}
-          className="w-[200px] h-[200px] overflow-hidden rounded-lg opacity-50 scale-x-[-1] relative -right-[28em] -bottom-[40em] drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
+          className="w-[200px] h-[200px] overflow-hidden rounded-lg opacity-50 scale-x-[-1] relative -right-[40em] -bottom-[37em] drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
         >
           <img
             src={autoretrato3}
@@ -119,7 +119,7 @@ const Sobre = () => {
 
         <div
           ref={(el) => (floatingRefs.current[2] = el)}
-          className="w-[200px] h-[200px] overflow-hidden rounded-lg opacity-50 relative -top-[14em] -right-[27em] drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
+          className="w-[200px] h-[200px] overflow-hidden rounded-lg opacity-50 relative -top-[14em] -right-[42em] drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)]"
         >
           <img
             src={autoretrato4}
@@ -130,10 +130,10 @@ const Sobre = () => {
       </div>
 
       {/* CONTEÚDO PRINCIPAL */}
-      <div className="pl-16 relative z-10 mobile-conteudo-principal">
+      <div className="w-full max-w-[1200px] mx-auto relative z-10 mobile-conteudo-principal">
         <div
-          className={`titulo-texto transition-opacity transition-transform duration-700 ease-out transform flex flex-col mobile-center-text mobile-title-container ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          className={`titulo-texto transition-opacity duration-700 ease-out flex flex-col mobile-center-text mobile-title-container ${
+            visible ? "opacity-100" : "opacity-0"
           }`}
         >
           <h2 className="sobre-mim text-8xl font-poppins font-normal relative -left-[0.3em] -bottom-[em] order-1 mobile-title">
@@ -148,33 +148,32 @@ const Sobre = () => {
             />
           </div>
         </div>
-        {/* Imagem e Texto */}
-        <div className="conteudo-principal flex flex-col lg:flex-row items-start gap-12 mobile-conteudo-principal">
+
+        {/* CONTAINER INDEPENDENTES */}
+        <div className="conteudo-principal grid grid-cols-1 lg:grid-cols-[auto_auto] gap-12 items-start mobile-conteudo-principal mt-12">
+          {/* FOTO */}
           <div
-            className={`foto-container bg-[#D9D9D9] p-5 rounded-lg drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative -bottom-[5em] pb-[2em] transition-opacity transition-transform duration-700 ease-out transform mobile-foto-container ${
-              fotoVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`foto-container bg-[#D9D9D9] w-[430px] pl-4 pr-4 pt-3 pb-8 rounded-lg drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative transition-opacity duration-700 ease-out mobile-foto-container ${
+              fotoVisible ? "opacity-100" : "opacity-0"
+            } flex flex-col items-center`}
           >
             <img
               src={autoretrato5}
               alt="Autorretrato"
-              className="autorretato-img w-[420px] h-[520px] object-cover object-top rounded-lg drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] -scale-x-100 mobile-foto-img"
+              className="autorretato-img w-[400px] h-[500px] object-cover object-top rounded-lg drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] -scale-x-100 mobile-foto-img"
             />
             <p className="text-center text-black font-jakarta text-sm tracking-[0.2em] relative -bottom-4 mobile-foto-caption">
               Vinícius Freire, 2025.
             </p>
           </div>
 
+          {/* ARTIGO / TEXTO */}
           <article
-            className={`texto-artigo w-[620px] h-[670px] flex flex-col text-base font-prata leading-relaxed bg-[#131212] p-8 rounded-lg border border-white/20 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative -right-40 transition-opacity transition-transform duration-700 ease-out transform mobile-texto-artigo sobre-caixa-texto${
-              fotoVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
+            className={`texto-artigo w-[600px] max-h-[900px] flex flex-col text-base font-prata leading-relaxed bg-[#131212] p-8 rounded-lg border border-white/20 drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] relative transition-opacity duration-700 ease-out mobile-texto-artigo sobre-caixa-texto ${
+              fotoVisible ? "opacity-100" : "opacity-0"
             }`}
           >
-            <div className="space-y-4 overflow-y-auto pr-2 flex-1 font-light text-[20px] mobile-texto-content mobile-text-box">
+            <div className="space-y-4 overflow-y-auto pr-3 flex-1 font-light text-[20px] mobile-texto-content mobile-text-box">
               <p className="font-poppins">
                 Olá! Sou Vinícius Freire, desenvolvedor{" "}
                 <span className="text-[#F3AD4C] font-prata">Full-Stack</span>{" "}

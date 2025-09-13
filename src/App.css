@@ -45,112 +45,26 @@
     margin-top: 0.5rem;
   }
 
-  @media (max-width: 600px) {
-    /* Centralizar o container principal */
-    .pl-16 {
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
-    }
-
-    /* Centralizar título e texto */
-    .mobile-center-text {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 100%;
-    }
-    .mobile-title {
-      position: relative !important;
-      left: 0 !important;
-      bottom: 0 !important;
-      font-size: 2.5rem !important;
-    }
-
-    /* Centralizar todo o conteúdo principal e mudar flex para coluna e alinhamento central */
-    .mobile-conteudo-principal {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-
-    /* Foto container: background contido ao redor da foto, bordas arredondadas, centralizado */
-    .mobile-foto-container {
-      padding: 1rem !important;
-      background-color: #d9d9d9 !important;
-      border-radius: 1rem !important;
-      position: relative !important;
-      bottom: 0 !important;
-      width: auto !important;
-      max-width: 320px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Foto: bordas arredondadas, tamanho responsivo, centralizada */
-    .mobile-foto-img {
-      border-radius: 1rem !important;
-      width: 100% !important;
-      height: auto !important;
-      object-fit: cover;
-      object-position: top;
-      transform: scaleX(-1) !important;
-      box-shadow: none !important;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Legenda foto centralizada */
-    .mobile-foto-caption {
-      position: relative !important;
-      bottom: 0 !important;
-      margin-top: 0.5rem;
-      text-align: center;
-    }
-
-    /* Caixa de texto: bordas arredondadas, padding menor, largura responsiva, centralizado */
-    .mobile-texto-artigo {
-      width: 100% !important;
-      height: auto !important;
-      border-radius: 1rem !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 1rem !important;
-      position: relative !important;
-      right: 0 !important;
-      margin-top: 1rem;
-      background-color: #131212 !important;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .mobile-texto-content {
-      font-size: 1rem !important;
-      padding-right: 0 !important;
-      overflow-y: visible !important;
-    }
-
-    /* Botão centralizado */
-    .mobile-button-container {
-      display: flex !important;
-      justify-content: center !important;
-      margin-top: 1rem;
-    }
-
-    .mobile-button-container a {
-      padding-left: 1.5rem !important;
-      padding-right: 1.5rem !important;
-      padding-top: 0.5rem !important;
-      padding-bottom: 0.5rem !important;
-      font-size: 1rem !important;
-      border-radius: 0.5rem !important;
-    }
+  /* Centralizar o container principal */
+  .pl-16 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 
-  /* Caixa de texto: bordas arredondadas, padding menor, largura responsiva */
+  /* Centralizar todo o conteúdo principal e mudar flex para coluna e alinhamento central */
+  .mobile-conteudo-principal {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Legenda foto centralizada */
+  .mobile-foto-caption {
+    text-align: center;
+  }
+
+  /* Caixa de texto: bordas arredondadas, padding menor, largura responsiva, centralizado */
   .mobile-texto-artigo {
     width: 100% !important;
     height: auto !important;
@@ -160,8 +74,11 @@
     padding: 1rem !important;
     position: relative !important;
     right: 0 !important;
-    margin-top: 2rem;
+    margin-top: 1rem;
     background-color: #131212 !important;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .mobile-texto-content {
@@ -170,15 +87,12 @@
     overflow-y: visible !important;
   }
 
-
   /* Botão centralizado */
   .mobile-button-container {
-    display: flex;
-    justify-content: center;
+    display: flex !important;
+    justify-content: center !important;
     margin-top: 1rem;
   }
-
-  
 
   .mobile-button-container a {
     padding-left: 1.5rem !important;
@@ -201,11 +115,66 @@
 
   .mobile-text-box {
     width: 300px;
-    
   }
 }
 
-/* Acima de 700px, muda o position */
+@media (max-width: 480px) {
+  .typing-tex-hab {
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    left: -13.5em;
+    bottom: 5em;
+  }
+
+  .typing {
+    position: relative;
+    top: -1.5em;
+  }
+
+  .mobile-text-box {
+    width: 320px;
+  }
+}
+
+@media (max-width: 400px) {
+  .project-card {
+    width: 300px;
+    min-height: auto;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+
+  .project-card-content {
+    padding: 1rem;
+  }
+
+  .project-card h3 {
+    font-size: 1rem;
+  }
+
+  .project-card p {
+    font-size: 0.85rem;
+  }
+
+  .project-card .text-xs {
+    font-size: 0.75rem;
+  }
+
+  .project-card .text-lg {
+    font-size: 1rem;
+  }
+
+  .project-card {
+    letter-spacing: 0.05em;
+  }
+
+  /* Reduzindo altura da imagem */
+  .project-card .relative.w-full.h-\[220px\] {
+    height: 160px !important;
+  }
+}
+
 @media (min-width: 700px) {
   .text-hero {
     position: relative;
@@ -217,7 +186,6 @@
   }
 }
 
-/* Media Query para dispositivos com largura menor que 600px */
 @media screen and (max-width: 600px) {
   #habilidades {
     padding: 1.5rem;
@@ -227,6 +195,7 @@
 
   #habilidades h2 {
     font-size: 2.5rem;
+    text-align: center;
   }
 
   .typing-text {
@@ -254,23 +223,18 @@
   }
 
   .habilidade-barra {
-    height: 1rem !important;
+    height: 0.6rem !important; /* ajustado para 600px */
   }
 
-  .botao-curriculo {
-    font-size: 1rem !important;
-    padding: 0.8rem 1.5rem !important;
-    border-radius: 0.75em;
+  .habilidade-barra > div {
+    height: 0.6rem !important;
   }
 
-  .decorative-image {
-    width: 100px !important;
-    height: 100px !important;
-    filter: blur(2px);
-  }
-
-  .text-8xl {
-    font-size: 2.5rem !important;
+  /* Remove padding e posicionamentos do contêiner do título */
+  .titulo-container {
+    padding-left: 0 !important;
+    right: 0 !important;
+    align-items: center;
   }
 
   .px-16 {
@@ -300,36 +264,14 @@
   .drop-shadow-\[0_6px_8px_rgba\(0\,0\,0\,0\.6\)\] {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4) !important;
   }
-  .habilidade-barra {
-    height: 0.6rem !important; /* antes era 1rem */
-  }
 
-  .habilidade-barra > div {
-    height: 0.6rem !important; /* barra de preenchimento */
-  }
-
-  /* Centraliza o título apenas no mobile */
-  #habilidades h2 {
-    text-align: center;
-  }
-
-  /* Remove padding e posicionamentos do contêiner do título */
-  .titulo-container {
-    padding-left: 0 !important;
-    right: 0 !important;
-    align-items: center;
-  }
-
-  .typing-tex-hab {
-    text-align: center;
-    margin: 0 auto;
-    position: relative;
-    left: -13.5em;
-    bottom: 5em;
+  .botao-curriculo {
+    font-size: 1rem !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 0.75em;
   }
 }
 
-/* Aumenta o tamanho dos botões e centraliza o texto a partir de 600px */
 @media (min-width: 600px) {
   .custom-button {
     padding-left: 5rem !important; /* 80px */
@@ -358,11 +300,7 @@
     position: relative !important;
     bottom: -1.5em;
   }
-  .typing-proj {
-    position: relative;
-    right: 31.6em;
-    bottom: -3.5em;
-  }
+ 
   .project-button {
     padding-left: 0.5rem !important;    /* 48px */
     padding-right: 0.5rem !important;   /* 48px */
@@ -370,56 +308,7 @@
     padding-bottom: 0.5rem !important;/* 24px */
     font-size: 1rem !important;    /* 20px */
   }
-  .project-card {
-    
-  }
 }
 
-@media (max-width: 480px) {
-  .typing {
-    position: relative;
-    top: -1.5em;
-  }
-  .mobile-text-box {
-    width: 320px;
-    
-  }
-  @media (max-width: 400px) {
-  .project-card {
-    width: 300px;
-    min-height: auto;
-    padding: 1rem;
-    margin: 0 auto;
-  }
 
-  .project-card-content {
-    padding: 1rem;
-  }
-
-  
-  .project-card h3 {
-    font-size: 1rem;
-  }
-
-  .project-card p {
-    font-size: 0.85rem;
-  }
-
-  .project-card .text-xs {
-    font-size: 0.75rem;
-  }
-
-  .project-card .text-lg {
-    font-size: 1rem;
-  }
-
-  .project-card .tracking-[0.1em] {
-    letter-spacing: 0.05em;
-  }
-
-  /* Reduzindo altura da imagem */
-  .project-card .relative.w-full.h-\[220px\] {
-    height: 160px !important;
-  }
-}
 
