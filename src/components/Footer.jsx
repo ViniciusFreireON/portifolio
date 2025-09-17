@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { db } from "/src/firebase/firebase"; // importa configuração do Firebase
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 const socials = [
   {
@@ -22,6 +24,11 @@ const Footer = () => {
   const [visible, setVisible] = useState(false);
   const footerRef = useRef(null);
 
+  // estados para o input e feedback
+  const [inputValue, setInputValue] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -38,8 +45,26 @@ const Footer = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e) => {
+  // envia para o Firestore
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!inputValue.trim()) return;
+
+    try {
+      setLoading(true);
+      await addDoc(collection(db, "footerContacts"), {
+        contato: inputValue,
+        createdAt: serverTimestamp(),
+      });
+      setSuccess(true);
+      setInputValue("");
+      setTimeout(() => setSuccess(false), 3000);
+    } catch (err) {
+      console.error("Erro ao salvar no Firestore:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const baseDelay = 150;
@@ -72,16 +97,25 @@ const Footer = () => {
         >
           <input
             type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
             placeholder="Quer criar algo? Me envie seu e-mail ou WhatsApp."
             className="w-full px-6 py-4 pr-28 rounded-[0.8em] border border-white/20 bg-black bg-opacity-50 text-white font-font-jakarta text-[0.9em] font-extralight placeholder-white focus:outline-none focus:ring-2 mobile:px-4 mobile:py-3 mobile:pr-24 mobile:text-sm"
           />
           <button
             type="submit"
+            disabled={loading}
             className="absolute top-1/2 right-2 -translate-y-1/2 bg-gradient-to-r from-[#0A0B0C] to-[#171717] text-white font-font-jakarta text-[1em] font-light px-5 py-2 rounded-[0.8em] transition-transform duration-300 hover:scale-105 cursor-pointer drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border border-white/20 tracking-[0.1em] mobile:px-4 mobile:py-1.5 mobile:text-sm"
           >
-            Enviar
+            {loading ? "Enviando..." : "Enviar"}
           </button>
         </form>
+
+        {success && (
+          <p className="text-green-400 font-light font-jakarta text-sm mt-2">
+            ✅ Enviado com sucesso!
+          </p>
+        )}
       </div>
 
       {/* Direita: Redes sociais + Botão */}
@@ -191,10 +225,6 @@ const Footer = () => {
           .mobile\\:pr-24 {
             padding-right: 6rem;
           }
-          .mobile\\:px-4 {
-            padding-left: 1rem;
-            padding-right: 1rem;
-          }
           .mobile\\:py-1\\.5 {
             padding-top: 0.375rem;
             padding-bottom: 0.375rem;
@@ -249,10 +279,6 @@ const Footer = () => {
           }
           .mobile\\:right-0 {
             right: 0;
-          }
-          .mobile\\:px-4 {
-            padding-left: 1rem;
-            padding-right: 1rem;
           }
         }
       `}</style>

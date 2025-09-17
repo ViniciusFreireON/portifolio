@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useFloatingAnimation } from "/src/components/contato/UseFloatingAnimation";
+import { db } from "/src/firebase/firebase"; // Import do Firebase
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"; // Firestore
 
 // TypingText agora recebe prop active
 const TypingText = ({ text = "", speed = 150, active = false }) => {
@@ -85,6 +87,13 @@ const TypingText = ({ text = "", speed = 150, active = false }) => {
 const Contato = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
 
+  // Estados do formulário
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
   const floatingRefs = useMemo(() => {
     return Array(4)
       .fill(0)
@@ -110,6 +119,31 @@ const Contato = () => {
 
     return () => observer.disconnect();
   }, [hasAnimated]);
+
+  // Função para enviar para o Firebase
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      await addDoc(collection(db, "contatos"), {
+        nome,
+        email,
+        mensagem,
+        criadoEm: serverTimestamp(), // ✅ Alterado para usar serverTimestamp
+      });
+
+      alert("Mensagem enviada com sucesso! 🚀");
+      setNome("");
+      setEmail("");
+      setMensagem("");
+    } catch (error) {
+      console.error("Erro ao enviar mensagem:", error);
+      alert("Ocorreu um erro. Tente novamente.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section
@@ -142,7 +176,7 @@ const Contato = () => {
           style="top-[6em] left-[28em] opacity-20 mobile:top-[5em] mobile:left-[70%] mobile:opacity-10"
           speed="0.3"
         />
-        
+
         <DecorativeImage
           ref={floatingRefs[3]}
           src="/assets/instagram.png"
@@ -156,9 +190,10 @@ const Contato = () => {
       <div className="flex flex-col items-center justify-center text-center mb-16 relative z-10 mobile:mb-10">
         {/* Título */}
         <div
-          className={`${hasAnimated
-            ? "opacity-100 transition-opacity duration-1000"
-            : "opacity-0"
+          className={`${
+            hasAnimated
+              ? "opacity-100 transition-opacity duration-1000"
+              : "opacity-0"
           }`}
         >
           <h2 className="text-8xl font-poppins font-normal mobile:text-5xl">
@@ -171,9 +206,10 @@ const Contato = () => {
 
         {/* Descrição com animação de digitação - CENTRALIZADA */}
         <div
-          className={`mt-6 ${hasAnimated
-            ? "opacity-100 transition-opacity duration-1000 delay-300"
-            : "opacity-0"
+          className={`mt-6 ${
+            hasAnimated
+              ? "opacity-100 transition-opacity duration-1000 delay-300"
+              : "opacity-0"
           } mobile:mt-4`}
         >
           <TypingText
@@ -198,24 +234,35 @@ const Contato = () => {
             Transforme sua ideia <br />
             em <span className="text-[#F3AD4C] font-prata">Realidade.</span>
           </h3>
-          <form className="space-y-4 mobile:space-y-3">
+          <form className="space-y-4 mobile:space-y-3" onSubmit={handleSubmit}>
             <FormField
               label="Nome"
               type="text"
               placeholder="Ex: Vinícius Freire"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
             />
-            <FormField label="E-mail" type="email" placeholder="E-mail" />
+            <FormField
+              label="E-mail"
+              type="email"
+              placeholder="E-mail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <FormField
               label="Sua mensagem"
               type="textarea"
               placeholder="Sua mensagem"
+              value={mensagem}
+              onChange={(e) => setMensagem(e.target.value)}
             />
 
             <button
               type="submit"
+              disabled={loading}
               className="font-jakarta font-light tracking-[0.1em] bg-gradient-to-b from-[#0A0B0C] to-[#171717] text-white text-[1.2em] px-[4em] py-4 rounded-[1em] transition-transform duration-500 ease-in-out drop-shadow-[0_4px_6px_rgba(0,0,0,0.5)] border border-white/20 transform hover:scale-105 mobile:text-base mobile:px-8 mobile:py-3 mobile:w-full"
             >
-              Enviar
+              {loading ? "Enviando..." : "Enviar"}
             </button>
           </form>
         </div>
@@ -384,7 +431,7 @@ const Contato = () => {
   );
 };
 
-const FormField = ({ label, type, placeholder }) => (
+const FormField = ({ label, type, placeholder, value, onChange }) => (
   <>
     <p className="font-jakarta text-[1em] font-light tracking-[0.1em] relative -bottom-3 -right-2 mobile:text-sm mobile:-bottom-2 mobile:-right-1">
       {label}
@@ -393,12 +440,16 @@ const FormField = ({ label, type, placeholder }) => (
       <textarea
         placeholder={placeholder}
         rows="4"
+        value={value}
+        onChange={onChange}
         className="w-full bg-[#313131]/50 text-white p-3 rounded-md border border-white/10 outline-none h-[20rem] font-jakarta tracking-[0.1em] font-extralight mobile:h-[15rem] mobile:text-sm"
       />
     ) : (
       <input
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         className="w-full bg-[#313131]/50 text-white p-3 rounded-md border border-white/10 outline-none font-jakarta tracking-[0.1em] font-extralight mobile:text-sm mobile:p-2"
       />
     )}
@@ -415,7 +466,11 @@ const ContactInfo = ({ icon, label, value }) => {
 
   return (
     <div className="flex items-start gap-3 relative">
-      <img src={icon} alt={`${label} icon`} className="w-5 h-5 mt-1 mobile:w-4 mobile:h-4" />
+      <img
+        src={icon}
+        alt={`${label} icon`}
+        className="w-5 h-5 mt-1 mobile:w-4 mobile:h-4"
+      />
       <div>
         <p className="text-white/70 mb-1 mobile:text-sm">{label}</p>
         <div
